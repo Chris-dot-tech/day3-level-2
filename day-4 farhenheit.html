@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Temperature Converter</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin: 20px;
+    }
+    .converter-container {
+      display: inline-block;
+      text-align: left;
+      margin-top: 30px;
+    }
+    input {
+      padding: 10px;
+      font-size: 16px;
+      width: 200px;
+      margin: 10px 0;
+    }
+    label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Temperature Converter</h1>
+  <div class="converter-container">
+    <label for="celsius">Celsius:</label>
+    <input type="number" id="celsius" placeholder="Enter Celsius" oninput="convertToFahrenheit()">
+    
+    <label for="fahrenheit">Fahrenheit:</label>
+    <input type="number" id="fahrenheit" placeholder="Enter Fahrenheit" oninput="convertToCelsius()">
+  </div>
+
+  <script>
+    function convertToFahrenheit() {
+      const celsius = document.getElementById("celsius").value;
+      if (celsius === "") {
+        document.getElementById("fahrenheit").value = ""; // Clear value if Celsius is empty
+      } else {
+        const fahrenheit = (parseFloat(celsius) * 9/5) + 32;
+        document.getElementById("fahrenheit").value = fahrenheit.toFixed(2);
+      }
+    }
+
+    function convertToCelsius() {
+      const fahrenheit = document.getElementById("fahrenheit").value;
+      if (fahrenheit === "") {
+        document.getElementById("celsius").value = ""; // Clear value if Fahrenheit is empty
+      } else {
+        const celsius = (parseFloat(fahrenheit) - 32) * 5/9;
+        document.getElementById("celsius").value = celsius.toFixed(2);
+      }
+    }
+  </script>
+</body>
+</html>
